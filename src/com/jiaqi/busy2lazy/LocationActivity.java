@@ -27,8 +27,7 @@ public class LocationActivity extends Activity {
 		setContentView(R.layout.activity_location);
 
 		/*
-		 * I use Application class to store global shared data, such as
-		 * locationList, so that all component in this application can access it
+		 * use Application class to store global shared data
 		 */
 		myApp = (BlApplication) getApplication();
 		myApp.locationList = new ArrayList<BlLocation>();

@@ -26,8 +26,7 @@ public class ProfileActivity extends Activity {
 		setContentView(R.layout.activity_profile);
 
 		/*
-		 * I use Application class to store global shared data, such as
-		 * locationList, so that all component in this application can access it
+		 * use Application class to store global shared data
 		 */
 		myApp = (BlApplication) getApplication();
 		myApp.profileList = new ArrayList<BlProfile>();
