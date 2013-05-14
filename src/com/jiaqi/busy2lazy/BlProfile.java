@@ -19,15 +19,27 @@ public class BlProfile {
 		return this.mName;
 	}
 
+	/*
+	 * Constructor
+	 * this constructor uses only a name, other values are set to default 
+	 */
 	public BlProfile(String name) {
 		init(name, -1, -1, -1, -1, -1);
 	}
+
+	/*
+	 * Constructor
+	 * this constructor uses a full set of values. 
+	 */
 
 	public BlProfile(String name, int wifi, int bluetooth, int volume,
 			int vibration, int nfc) {
 		init(name, wifi, bluetooth, volume, vibration, nfc);
 	}
 
+	/*
+	 * initialization method. currently only used by constructors
+	 */
 	private void init(String name, int wifi, int bluetooth, int volume,
 			int vibration, int nfc) {
 		this.mName = name;
