@@ -27,6 +27,10 @@ public class LocationActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
+		
+		Intent intent = new Intent();
+		intent.setClass(LocationActivity.this, CellUpdateService.class);
+		startService(intent);
 
 		/*
 		 * use Application class to store global shared data
