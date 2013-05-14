@@ -1,4 +1,4 @@
-package com.jiaqi.busy2lazy;
+package com.jiaqi.busy2lazy.model;
 
 public class BlProfile {
 	String mName;

@@ -2,6 +2,8 @@ package com.jiaqi.busy2lazy;
 
 import java.util.ArrayList;
 
+import com.jiaqi.busy2lazy.model.BlLocation;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentName;

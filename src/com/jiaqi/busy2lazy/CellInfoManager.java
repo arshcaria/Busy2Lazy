@@ -3,6 +3,8 @@ package com.jiaqi.busy2lazy;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jiaqi.busy2lazy.model.CellInfo;
+
 import android.content.Context;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;

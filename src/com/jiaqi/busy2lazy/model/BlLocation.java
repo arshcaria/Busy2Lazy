@@ -1,4 +1,4 @@
-package com.jiaqi.busy2lazy;
+package com.jiaqi.busy2lazy.model;
 
 public class BlLocation {
 	// location name, like "home", "office" etc.
