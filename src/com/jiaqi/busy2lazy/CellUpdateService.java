@@ -1,5 +1,8 @@
 package com.jiaqi.busy2lazy;
 
+import com.jiaqi.busy2lazy.model.BlLocation;
+import com.jiaqi.busy2lazy.model.CellInfo;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -12,25 +15,33 @@ import android.util.Log;
 
 public class CellUpdateService extends Service {
 	private static final String TAG = "TAG_CellUpdateService";
-	GsmCellLocation location;
-	
+
+	BlApplication myApp;
+
+	TelephonyManager mTelephonyManager;
+	GsmCellLocation mLocation;
+
 	@Override
 	public void onCreate() {
-		TelephonyManager mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-		// 返回值MCC + MNC
+		myApp = (BlApplication) getApplication();
+
+		mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+		BlPhoneStateListener listener = new BlPhoneStateListener();
+		mTelephonyManager.listen(listener, PhoneStateListener.LISTEN_CELL_LOCATION);
+
 		String operator = mTelephonyManager.getNetworkOperator();
 		int mcc = Integer.parseInt(operator.substring(0, 3));
 		int mnc = Integer.parseInt(operator.substring(3));
-		// 中国移动和中国联通获取LAC、CID的方式
-		location = (GsmCellLocation) mTelephonyManager.getCellLocation();
-		if (location == null) {
-			Log.d(TAG, "No signal");
-		} else {
-			Integer lac = location.getLac();
-			Integer cellId = location.getCid();
-			Log.d(TAG, " MCC = " + mcc + "\t MNC = " + mnc + "\t LAC = " + lac + "\t CID = " + cellId);
-		}
 		
+		mLocation = (GsmCellLocation) mTelephonyManager.getCellLocation();
+		if (mLocation == null) {
+			Log.w(TAG, "No signal");
+		} else {
+			Integer lac = mLocation.getLac();
+			Integer cellId = mLocation.getCid();
+			Log.i(TAG, " MCC = " + mcc + "\t MNC = " + mnc + "\t LAC = " + lac + "\t CID = " + cellId);
+		}
 	}
 
 	@Override
@@ -49,10 +60,21 @@ public class CellUpdateService extends Service {
 
 		@Override
 		public void onCellLocationChanged(CellLocation location) {
-			GsmCellLocation loc= (GsmCellLocation) location;
-			Integer lac = loc.getLac();
-			Integer cellId = loc.getCid();
-			Log.d(TAG, "LAC = " + lac + "\t CID = " + cellId);
+			mLocation = (GsmCellLocation) location;
+			if (location == null) {
+				Log.w(TAG, "No location info retrieved");
+			} else {
+				myApp.currentCell.lac = mLocation.getLac();
+				myApp.currentCell.cid = mLocation.getCid();
+				myApp.currentCell.mcc = mTelephonyManager.getNetworkOperator().substring(0, 3);
+				myApp.currentCell.mnc = mTelephonyManager.getNetworkOperator().substring(3, 5);
+				Log.i(TAG, "LAC = " + myApp.currentCell.lac + " CID = " + myApp.currentCell.cid);
+
+			}
 		}
+	}
+
+	public void regCellToLocation(BlLocation location, CellInfo cell) {
+
 	}
 }

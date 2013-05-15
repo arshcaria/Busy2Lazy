@@ -43,10 +43,10 @@ public class CellInfoManager {
 			mcc = manager.getNetworkOperator().substring(0, 3);
 			mnc = manager.getNetworkOperator().substring(3, 5);
 
-			currentCell.cellId = gsm.getCid();
-			currentCell.mobileCountryCode = mcc;
-			currentCell.mobileNetworkCode = mnc;
-			currentCell.locationAreaCode = lac;
+			currentCell.cid = gsm.getCid();
+			currentCell.mcc = mcc;
+			currentCell.mnc = mnc;
+			currentCell.lac = lac;
 			currentCell.radioType = "gsm";
 			CellID.add(currentCell);
 
@@ -54,10 +54,10 @@ public class CellInfoManager {
 			int size = list.size();
 			for (int i = 0; i < size; i++) {
 				CellInfo info = new CellInfo();
-				info.cellId = list.get(i).getCid();
-				info.mobileCountryCode = mcc;
-				info.mobileCountryCode = mnc;
-				info.locationAreaCode = lac;
+				info.cid = list.get(i).getCid();
+				info.mcc = mcc;
+				info.mcc = mnc;
+				info.lac = lac;
 				CellID.add(info);
 			}
 			return CellID;
