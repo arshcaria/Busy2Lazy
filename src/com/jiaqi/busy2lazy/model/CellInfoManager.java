@@ -1,9 +1,8 @@
-package com.jiaqi.busy2lazy;
+package com.jiaqi.busy2lazy.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jiaqi.busy2lazy.model.CellInfo;
 
 import android.content.Context;
 import android.telephony.NeighboringCellInfo;

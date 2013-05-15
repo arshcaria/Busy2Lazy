@@ -1,8 +1,5 @@
 package com.jiaqi.busy2lazy;
 
-import com.jiaqi.busy2lazy.model.BlLocation;
-import com.jiaqi.busy2lazy.model.CellInfo;
-
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -72,9 +69,5 @@ public class CellUpdateService extends Service {
 
 			}
 		}
-	}
-
-	public void regCellToLocation(BlLocation location, CellInfo cell) {
-
 	}
 }
