@@ -10,7 +10,7 @@ import android.telephony.TelephonyManager;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 
-public class CellUpdateService extends Service {
+public class UpdatCelleService extends Service {
 	private static final String TAG = "TAG_CellUpdateService";
 
 	BlApplication myApp;

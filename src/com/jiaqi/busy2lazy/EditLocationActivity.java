@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class EditLocationActivity extends Activity {
 
-	public BlApplication myApp;
+	BlApplication myApp;
 	EditText locationNameEditText;
 
 	@Override

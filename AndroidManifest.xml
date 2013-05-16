@@ -39,8 +39,8 @@
         </activity>
 
         <service 
-            android:name="CellUpdateService" 
-            android:label="Cell Update Service">
+            android:name="UpdateCellService" 
+            android:label="Update Cell Service">
 
         </service>
     </application>

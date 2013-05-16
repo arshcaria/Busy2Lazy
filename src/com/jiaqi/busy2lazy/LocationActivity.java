@@ -29,7 +29,7 @@ public class LocationActivity extends Activity {
 		setContentView(R.layout.activity_location);
 		
 		Intent intent = new Intent();
-		intent.setClass(LocationActivity.this, CellUpdateService.class);
+		intent.setClass(LocationActivity.this, UpdatCelleService.class);
 		startService(intent);
 
 		/*
