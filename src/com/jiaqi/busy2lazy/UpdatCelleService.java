@@ -11,7 +11,7 @@ import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 
 public class UpdatCelleService extends Service {
-	private static final String TAG = "TAG_CellUpdateService";
+	private static final String TAG = "TAG_CellUpdateService_busy2lazy";
 
 	BlApplication myApp;
 

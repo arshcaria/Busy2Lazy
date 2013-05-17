@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ProfileActivity extends Activity {
-	private static final String TAG = "TAG_ProfileActivity";
+	private static final String TAG = "TAG_ProfileActivity_busy2lazy";
 	public BlApplication myApp;
 
 	@Override

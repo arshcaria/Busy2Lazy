@@ -1,6 +1,8 @@
 package com.jiaqi.busy2lazy.model;
 
 public class BlProfile {
+	private static final String TAG = "TAG_BlProfile_busy2lazy";
+
 	String mName;
 
 	/*

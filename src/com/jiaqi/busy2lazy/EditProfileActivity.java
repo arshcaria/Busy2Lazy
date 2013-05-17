@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.widget.EditText;
 
 public class EditProfileActivity extends Activity {
+	private static final String TAG = "TAG_EditProfileActivity_busy2lazy";
 
 	public BlApplication myApp;
 	EditText profileNameEditText;

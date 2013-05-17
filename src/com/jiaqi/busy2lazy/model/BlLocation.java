@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class BlLocation {
-	private static final String TAG = "TAG_BlLocation";
+	private static final String TAG = "TAG_BlLocation_busy2lazy";
 	
 	public static final int CELL_ALREADY_IN_LIST = 1;
 	public static final int CELL_ADDED_SUCCESS = 0;
 	public static final int CELL_REMOVED_SUCCESS = 0;
-	public static final int CELL_NOT_IT_LIST = -1;
+	public static final int CELL_NOT_IN_LIST = -1;
 	
 	// location name, like "home", "office" etc.
 	String mName;
@@ -18,7 +18,7 @@ public class BlLocation {
 	// cells that are registered with this location
 	ArrayList<CellInfo> cellList;
 	
-	// associated profile with current location
+	// profile that is associated with this location
 	BlProfile mProfile;
 
 	public BlLocation(String name) {
@@ -52,7 +52,7 @@ public class BlLocation {
 			}
 		}
 		Log.e(TAG, "This cell is not in the cell list!");
-		return CELL_NOT_IT_LIST;
+		return CELL_NOT_IN_LIST;
 	}
 	
 	@Override

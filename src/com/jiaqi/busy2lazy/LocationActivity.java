@@ -20,7 +20,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 public class LocationActivity extends Activity {
-	private static final String TAG = "TAG_LocationActivity";
+	private static final String TAG = "TAG_LocationActivity_busy2lazy";
+	
 	public BlApplication myApp;
 
 	@Override
