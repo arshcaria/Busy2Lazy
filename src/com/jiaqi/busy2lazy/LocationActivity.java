@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.jiaqi.busy2lazy.model.BlLocation;
 
 import android.app.Activity;
-import android.app.Application;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,20 +15,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 public class LocationActivity extends Activity {
-	private static final String TAG = "TAG_LocationActivity_busy2lazy";
-	
+	private static final String TAG = "LocationActivity_busy2lazy";
+
 	public BlApplication myApp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
-		
+
 		Intent intent = new Intent();
 		intent.setClass(LocationActivity.this, UpdatCelleService.class);
 		startService(intent);
@@ -44,31 +45,41 @@ public class LocationActivity extends Activity {
 
 		ListView locationListView = (ListView) findViewById(R.id.location_list);
 
-		ArrayAdapter<BlLocation> locationAdapter = new ArrayAdapter<BlLocation>(
-				this, R.layout.location_item_lo, myApp.locationList);
+		ArrayAdapter<BlLocation> locationAdapter = new ArrayAdapter<BlLocation>(this, R.layout.location_item_lo,
+				myApp.locationList);
 		locationListView.setAdapter(locationAdapter);
 
 		locationListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Log.d(TAG, "Location: " + position + " clicked");
 				Intent intent = new Intent();
-				intent.setComponent(new ComponentName(getApplicationContext(),
-						EditLocationActivity.class));
+				intent.setComponent(new ComponentName(getApplicationContext(), EditLocationActivity.class));
 				intent.putExtra("LocationID", position);
 				startActivity(intent);
 			}
 		});
 
+		locationListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				Log.d(TAG, "Location: " + position + " long clicked");
+				
+				
+				
+				return true;
+			}
+			
+		});
+		
 		Button toProfileActivityButton = (Button) findViewById(R.id.to_profile_activity_button);
 		toProfileActivityButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setComponent(new ComponentName(getApplicationContext(),
-						ProfileActivity.class));
+				intent.setComponent(new ComponentName(getApplicationContext(), ProfileActivity.class));
 				startActivity(intent);
 			}
 		});

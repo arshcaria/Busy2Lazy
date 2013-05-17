@@ -7,8 +7,9 @@ import android.view.Menu;
 import android.widget.EditText;
 
 public class EditLocationActivity extends Activity {
-	private static final String TAG = "TAG_EditLocationActivity_busy2lazy";
-	
+	@SuppressWarnings("unused")
+	private static final String TAG = "EditLocationActivity_busy2lazy";
+
 	BlApplication myApp;
 	EditText locationNameEditText;
 
@@ -22,8 +23,7 @@ public class EditLocationActivity extends Activity {
 
 		locationNameEditText = (EditText) findViewById(R.id.location_name_edittext);
 		// get location name to current edit text
-		locationNameEditText.setText(myApp.locationList.get(position)
-				.toString());
+		locationNameEditText.setText(myApp.locationList.get(position).toString());
 
 	}
 

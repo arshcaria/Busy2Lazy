@@ -3,7 +3,6 @@ package com.jiaqi.busy2lazy.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import android.content.Context;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;
@@ -23,8 +22,7 @@ public class CellInfoManager {
 	}
 
 	public ArrayList<CellInfo> getCellInfo(Context context) {
-		manager = (TelephonyManager) context
-				.getSystemService(Context.TELEPHONY_SERVICE);
+		manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 		listener = new PhoneStateListener();
 		manager.listen(listener, 0);
 		ArrayList<CellInfo> CellID = new ArrayList<CellInfo>();
@@ -32,8 +30,7 @@ public class CellInfoManager {
 
 		int type = manager.getNetworkType();
 
-		if (type == TelephonyManager.NETWORK_TYPE_GPRS
-				|| type == TelephonyManager.NETWORK_TYPE_EDGE
+		if (type == TelephonyManager.NETWORK_TYPE_GPRS || type == TelephonyManager.NETWORK_TYPE_EDGE
 				|| type == TelephonyManager.NETWORK_TYPE_HSDPA) {
 			gsm = ((GsmCellLocation) manager.getCellLocation());
 			if (gsm == null)
@@ -61,8 +58,7 @@ public class CellInfoManager {
 			}
 			return CellID;
 
-		} else if (type == TelephonyManager.NETWORK_TYPE_CDMA
-				|| type == TelephonyManager.NETWORK_TYPE_1xRTT) {
+		} else if (type == TelephonyManager.NETWORK_TYPE_CDMA || type == TelephonyManager.NETWORK_TYPE_1xRTT) {
 			cdma = ((CdmaCellLocation) manager.getCellLocation());
 			if (cdma == null)
 				return null;

@@ -11,7 +11,7 @@ import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 
 public class UpdatCelleService extends Service {
-	private static final String TAG = "TAG_CellUpdateService_busy2lazy";
+	private static final String TAG = "CellUpdateService_busy2lazy";
 
 	BlApplication myApp;
 
@@ -30,7 +30,7 @@ public class UpdatCelleService extends Service {
 		String operator = mTelephonyManager.getNetworkOperator();
 		int mcc = Integer.parseInt(operator.substring(0, 3));
 		int mnc = Integer.parseInt(operator.substring(3));
-		
+
 		mLocation = (GsmCellLocation) mTelephonyManager.getCellLocation();
 		if (mLocation == null) {
 			Log.w(TAG, "No signal");

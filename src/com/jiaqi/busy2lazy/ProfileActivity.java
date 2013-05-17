@@ -11,15 +11,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ProfileActivity extends Activity {
-	private static final String TAG = "TAG_ProfileActivity_busy2lazy";
+	private static final String TAG = "ProfileActivity_busy2lazy";
 	public BlApplication myApp;
 
 	@Override
@@ -38,18 +36,16 @@ public class ProfileActivity extends Activity {
 
 		ListView profileListView = (ListView) findViewById(R.id.profile_list);
 
-		ArrayAdapter<BlProfile> profileAdapter = new ArrayAdapter<BlProfile>(
-				this, R.layout.profile_item_lo, myApp.profileList);
+		ArrayAdapter<BlProfile> profileAdapter = new ArrayAdapter<BlProfile>(this, R.layout.profile_item_lo,
+				myApp.profileList);
 		profileListView.setAdapter(profileAdapter);
 
 		profileListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Log.d(TAG, "Profile: " + position + " clicked");
 				Intent intent = new Intent();
-				intent.setComponent(new ComponentName(getApplicationContext(),
-						EditProfileActivity.class));
+				intent.setComponent(new ComponentName(getApplicationContext(), EditProfileActivity.class));
 				intent.putExtra("ProfileID", position);
 				startActivity(intent);
 			}

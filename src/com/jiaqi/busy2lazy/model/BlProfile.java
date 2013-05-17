@@ -1,7 +1,8 @@
 package com.jiaqi.busy2lazy.model;
 
 public class BlProfile {
-	private static final String TAG = "TAG_BlProfile_busy2lazy";
+	@SuppressWarnings("unused")
+	private static final String TAG = "BlProfile_busy2lazy";
 
 	String mName;
 
@@ -13,7 +14,7 @@ public class BlProfile {
 	int mVibration;
 	int mNfc;
 	/*
-	 * for vol range from -1 to 7. 0: silent -1: no change
+	 * for vol, range from -1 to 7. 0: silent -1: no change
 	 */
 	int mVolume;
 
@@ -22,28 +23,25 @@ public class BlProfile {
 	}
 
 	/*
-	 * Constructor
-	 * this constructor uses only a name, other values are set to default 
+	 * Constructor this constructor uses only a name, other values are set to
+	 * default
 	 */
 	public BlProfile(String name) {
 		init(name, -1, -1, -1, -1, -1);
 	}
 
 	/*
-	 * Constructor
-	 * this constructor uses a full set of values. 
+	 * Constructor this constructor uses a full set of values.
 	 */
 
-	public BlProfile(String name, int wifi, int bluetooth, int volume,
-			int vibration, int nfc) {
+	public BlProfile(String name, int wifi, int bluetooth, int volume, int vibration, int nfc) {
 		init(name, wifi, bluetooth, volume, vibration, nfc);
 	}
 
 	/*
 	 * initialization method. currently only used by constructors
 	 */
-	private void init(String name, int wifi, int bluetooth, int volume,
-			int vibration, int nfc) {
+	private void init(String name, int wifi, int bluetooth, int volume, int vibration, int nfc) {
 		this.mName = name;
 		this.mWifi = wifi;
 		this.mBluetooth = bluetooth;

@@ -12,14 +12,16 @@ import android.app.Application;
  * currently, this class is only used for storing global variables or objects.
  */
 public class BlApplication extends Application {
-	private static final String TAG = "TAG_BlApplication_busy2lazy";
+	@SuppressWarnings("unused")
+	private static final String TAG = "BlApplication_busy2lazy";
 
 	public ArrayList<BlLocation> locationList;
 	public ArrayList<BlProfile> profileList;
-	
+
 	/**
-	 * current cell.
-	 * this can be updated by {@link UpdatCelleService.BlPhoneStateListener} when phone location changes
+	 * current cell. this can be updated by
+	 * {@link UpdatCelleService.BlPhoneStateListener} when phone location
+	 * changes
 	 */
 	public CellInfo currentCell;
 
