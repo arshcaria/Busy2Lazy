@@ -8,7 +8,11 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="16" />
 
+    
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name="com.jiaqi.busy2lazy.BlApplication"
@@ -46,6 +50,10 @@
         <activity
             android:name="com.jiaqi.busy2lazy.EditCellActivity"
             android:label="@string/title_activity_edit_cell" >
+        </activity>
+        <activity
+            android:name="com.jiaqi.busy2lazy.ToggleTestActivity"
+            android:label="@string/title_activity_toggle_test" >
         </activity>
     </application>
 

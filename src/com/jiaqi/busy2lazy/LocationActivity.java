@@ -69,6 +69,16 @@ public class LocationActivity extends Activity {
 			}
 		});
 
+		Button toToggleTestButton = (Button) findViewById(R.id.to_toggle_test_button);
+		toToggleTestButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setComponent(new ComponentName(getApplicationContext(), ToggleTestActivity.class));
+				startActivity(intent);
+			}
+		});
 	}
 
 	@Override
