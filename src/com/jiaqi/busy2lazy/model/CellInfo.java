@@ -1,6 +1,8 @@
 package com.jiaqi.busy2lazy.model;
 
-public class CellInfo {
+import java.io.Serializable;
+
+public class CellInfo implements Serializable{
 
 	public String mcc;
 	public String mnc;

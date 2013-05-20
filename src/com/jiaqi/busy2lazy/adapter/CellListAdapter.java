@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class MyAdapter extends BaseAdapter {
+public class CellListAdapter extends BaseAdapter {
 	// 填充数据的list
 	private ArrayList<CellInfo> list;
 	// 用来控制CheckBox的选中状况
@@ -25,7 +25,7 @@ public class MyAdapter extends BaseAdapter {
 	private LayoutInflater inflater = null;
 
 	// 构造器
-	public MyAdapter(ArrayList<CellInfo> list, Context context) {
+	public CellListAdapter(ArrayList<CellInfo> list, Context context) {
 		this.context = context;
 		this.list = list;
 		inflater = LayoutInflater.from(context);
@@ -85,7 +85,7 @@ public class MyAdapter extends BaseAdapter {
 	}
 
 	public static void setIsSelected(HashMap<Integer, Boolean> isSelected) {
-		MyAdapter.isSelected = isSelected;
+		CellListAdapter.isSelected = isSelected;
 	}
 
 }

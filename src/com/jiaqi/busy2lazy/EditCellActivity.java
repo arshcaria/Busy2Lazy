@@ -2,7 +2,7 @@ package com.jiaqi.busy2lazy;
 
 import java.util.ArrayList;
 
-import com.jiaqi.busy2lazy.adapter.MyAdapter;
+import com.jiaqi.busy2lazy.adapter.CellListAdapter;
 import com.jiaqi.busy2lazy.adapter.ViewHolder;
 import com.jiaqi.busy2lazy.model.CellInfo;
 
@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class EditCellActivity extends Activity {
 
 	private ListView lv;
-	private MyAdapter mAdapter;
+	private CellListAdapter mAdapter;
 	private ArrayList<CellInfo> list;
 	private Button bt_selectall;
 	private Button bt_cancel;
@@ -32,17 +32,20 @@ public class EditCellActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_cell);
+		
+		list = (ArrayList<CellInfo>) getIntent().getSerializableExtra("CELLS");
+		
 		/* 实例化各个控件 */
 		lv = (ListView) findViewById(R.id.lv);
 		bt_selectall = (Button) findViewById(R.id.bt_selectall);
 		bt_cancel = (Button) findViewById(R.id.bt_cancelselectall);
 		bt_deselectall = (Button) findViewById(R.id.bt_deselectall);
 		tv_show = (TextView) findViewById(R.id.tv);
-		list = new ArrayList<CellInfo>();
+		//list = new ArrayList<CellInfo>();
 		// 为Adapter准备数据
-		initDate();
+		//initDate();
 		// 实例化自定义的MyAdapter
-		mAdapter = new MyAdapter(list, this);
+		mAdapter = new CellListAdapter(list, this);
 		// 绑定Adapter
 		lv.setAdapter(mAdapter);
 
@@ -52,7 +55,7 @@ public class EditCellActivity extends Activity {
 			public void onClick(View v) {
 				// 遍历list的长度，将MyAdapter中的map值全部设为true
 				for (int i = 0; i < list.size(); i++) {
-					MyAdapter.getIsSelected().put(i, true);
+					CellListAdapter.getIsSelected().put(i, true);
 				}
 				// 数量设为list的长度
 				checkNum = list.size();
@@ -67,8 +70,8 @@ public class EditCellActivity extends Activity {
 			public void onClick(View v) {
 				// 遍历list的长度，将已选的按钮设为未选
 				for (int i = 0; i < list.size(); i++) {
-					if (MyAdapter.getIsSelected().get(i)) {
-						MyAdapter.getIsSelected().put(i, false);
+					if (CellListAdapter.getIsSelected().get(i)) {
+						CellListAdapter.getIsSelected().put(i, false);
 						checkNum--;// 数量减1
 					}
 				}
@@ -85,11 +88,11 @@ public class EditCellActivity extends Activity {
 			public void onClick(View v) {
 				// 遍历list的长度，将已选的设为未选，未选的设为已选
 				for (int i = 0; i < list.size(); i++) {
-					if (MyAdapter.getIsSelected().get(i)) {
-						MyAdapter.getIsSelected().put(i, false);
+					if (CellListAdapter.getIsSelected().get(i)) {
+						CellListAdapter.getIsSelected().put(i, false);
 						checkNum--;
 					} else {
-						MyAdapter.getIsSelected().put(i, true);
+						CellListAdapter.getIsSelected().put(i, true);
 						checkNum++;
 					}
 
@@ -109,7 +112,7 @@ public class EditCellActivity extends Activity {
 				// 改变CheckBox的状态
 				holder.cb.toggle();
 				// 将CheckBox的选中状况记录下来
-				MyAdapter.getIsSelected().put(arg2, holder.cb.isChecked());
+				CellListAdapter.getIsSelected().put(arg2, holder.cb.isChecked());
 				// 调整选定条目
 				if (holder.cb.isChecked() == true) {
 					checkNum++;

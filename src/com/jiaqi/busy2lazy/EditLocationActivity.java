@@ -53,6 +53,7 @@ public class EditLocationActivity extends Activity {
 				
 				//data.putSerializable("CELLS", myApp.locationList.get(position).cellList);
 				//intent.putExtras(data);
+				intent.putExtra("CELLS", myApp.locationList.get(position).cellList);
 				intent.setComponent(new ComponentName(getApplicationContext(), EditCellActivity.class));
 				startActivity(intent);
 			}
