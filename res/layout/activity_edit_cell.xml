@@ -16,7 +16,15 @@
         android:layout_alignParentTop="true"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lv"
+        android:layout_alignParentRight="true"
+        android:text="Select to delete"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
@@ -38,16 +46,26 @@
         android:id="@+id/bt_deselectall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignBaseline="@+id/bt_selectall"
+        android:layout_alignBottom="@+id/bt_selectall"
+        android:layout_toRightOf="@+id/bt_selectall"
         android:text="Inverse" />
 
     <Button
         android:id="@+id/bt_cancelselectall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bt_deselectall"
+        android:layout_alignBottom="@+id/bt_deselectall"
+        android:layout_toRightOf="@+id/bt_deselectall"
+        android:text="None" />
+
+    <Button
+        android:id="@+id/bt_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="None" />
+        android:text="Delete" />
 
 </RelativeLayout>

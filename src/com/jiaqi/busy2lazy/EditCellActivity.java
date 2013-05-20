@@ -8,6 +8,7 @@ import com.jiaqi.busy2lazy.model.CellInfo;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class EditCellActivity extends Activity {
+	private static final String TAG = "EditCellActivity_busy2lazy";
 
 	private ListView lv;
 	private CellListAdapter mAdapter;
@@ -24,27 +26,32 @@ public class EditCellActivity extends Activity {
 	private Button bt_selectall;
 	private Button bt_cancel;
 	private Button bt_deselectall;
+	private Button bt_delete;
 	private int checkNum; // 记录选中的条目数量
 	private TextView tv_show;// 用于显示选中的条目数量
+	Intent intent;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_cell);
-		
-		list = (ArrayList<CellInfo>) getIntent().getSerializableExtra("CELLS");
-		
+		intent = getIntent();
+		list = (ArrayList<CellInfo>) intent.getSerializableExtra("CELLS");
+
 		/* 实例化各个控件 */
 		lv = (ListView) findViewById(R.id.lv);
 		bt_selectall = (Button) findViewById(R.id.bt_selectall);
 		bt_cancel = (Button) findViewById(R.id.bt_cancelselectall);
 		bt_deselectall = (Button) findViewById(R.id.bt_deselectall);
+		bt_delete = (Button) findViewById(R.id.bt_delete);
 		tv_show = (TextView) findViewById(R.id.tv);
-		//list = new ArrayList<CellInfo>();
+
+		// list = new ArrayList<CellInfo>();
 		// 为Adapter准备数据
-		//initDate();
+		// initDate();
 		// 实例化自定义的MyAdapter
+
 		mAdapter = new CellListAdapter(list, this);
 		// 绑定Adapter
 		lv.setAdapter(mAdapter);
@@ -63,6 +70,7 @@ public class EditCellActivity extends Activity {
 				dataChanged();
 			}
 		});
+
 		// 取消按钮的回调接口
 		bt_cancel.setOnClickListener(new OnClickListener() {
 
@@ -102,6 +110,31 @@ public class EditCellActivity extends Activity {
 			}
 		});
 
+		bt_delete.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				for (int i = list.size() - 1; i >= 0; i--) {
+					if (CellListAdapter.getIsSelected().get(i)) {
+						list.remove(i);
+					}
+				}
+
+				// 遍历list的长度，将已选的按钮设为未选
+				for (int i = 0; i < list.size(); i++) {
+					if (CellListAdapter.getIsSelected().get(i)) {
+						CellListAdapter.getIsSelected().put(i, false);
+						checkNum = 0;// 数量清零
+					}
+				}
+				dataChanged();
+
+				intent.putExtra("CELLS_RETURN", list);
+				EditCellActivity.this.setResult(0, intent);
+				EditCellActivity.this.finish();
+			}
+		});
+
 		// 绑定listView的监听器
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
@@ -124,6 +157,7 @@ public class EditCellActivity extends Activity {
 
 			}
 		});
+
 	}
 
 	// 初始化数据
