@@ -16,7 +16,7 @@ public class BlLocation {
 	String mName;
 
 	// cells that are registered with this location
-	ArrayList<CellInfo> cellList;
+	public ArrayList<CellInfo> cellList;
 
 	// profile that is associated with this location
 	BlProfile mProfile;

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.jiaqi.busy2lazy.model.BlLocation;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -60,19 +58,6 @@ public class LocationActivity extends Activity {
 			}
 		});
 
-		locationListView.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-			@Override
-			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				Log.d(TAG, "Location: " + position + " long clicked");
-				
-				
-				
-				return true;
-			}
-			
-		});
-		
 		Button toProfileActivityButton = (Button) findViewById(R.id.to_profile_activity_button);
 		toProfileActivityButton.setOnClickListener(new OnClickListener() {
 

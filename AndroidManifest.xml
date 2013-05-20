@@ -7,9 +7,9 @@
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="16" />
-    
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name="com.jiaqi.busy2lazy.BlApplication"
         android:allowBackup="true"
@@ -38,11 +38,15 @@
             android:label="@string/title_activity_edit_profile" >
         </activity>
 
-        <service 
-            android:name="UpdateCellService" 
-            android:label="Update Cell Service">
-
+        <service
+            android:name="com.jiaqi.busy2lazy.UpdateCellService"
+            android:label="Update Cell Service" >
         </service>
+
+        <activity
+            android:name="com.jiaqi.busy2lazy.EditCellActivity"
+            android:label="@string/title_activity_edit_cell" >
+        </activity>
     </application>
 
 </manifest>

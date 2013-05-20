@@ -12,4 +12,10 @@ public class CellInfo {
 
 	public CellInfo() {
 	}
+
+	@Override
+	public String toString() {
+		return (lac + " : " + cid);
+	}
+	
 }
