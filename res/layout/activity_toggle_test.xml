@@ -57,31 +57,18 @@
         android:layout_toRightOf="@+id/vibration_status2"
         android:text="Vibration" />
 
-    <Spinner
-        android:id="@+id/nfc_status2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vibration_status2"
-        android:entries="@array/on_off_status" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vibration_status2"
-        android:layout_toRightOf="@+id/nfc_status2"
-        android:text="NFC" />
 
     <Spinner
         android:id="@+id/volume_status2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nfc_status2"
+        android:layout_below="@+id/vibration_status2"
         android:entries="@array/vol_status" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nfc_status2"
+        android:layout_below="@+id/vibration_status2"
         android:layout_toRightOf="@+id/volume_status2"
         android:text="Volume" />
 

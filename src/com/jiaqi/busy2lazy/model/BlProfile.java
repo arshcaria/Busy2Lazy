@@ -7,12 +7,11 @@ public class BlProfile {
 	String mName;
 
 	/*
-	 * for wifi bt vibr and nfc: 1: on 0: off -1: no change
+	 * for wifi bt vibr : 1: on 0: off -1: no change
 	 */
 	int mWifi;
 	int mBluetooth;
 	int mVibration;
-	int mNfc;
 	/*
 	 * for vol, range from -1 to 7. 0: silent -1: no change
 	 */
@@ -27,21 +26,21 @@ public class BlProfile {
 	 * default
 	 */
 	public BlProfile(String name) {
-		init(name, -1, -1, -1, -1, -1);
+		init(name, -1, -1, -1, -1);
 	}
 
 	/*
 	 * Constructor this constructor uses a full set of values.
 	 */
 
-	public BlProfile(String name, int wifi, int bluetooth, int volume, int vibration, int nfc) {
-		init(name, wifi, bluetooth, volume, vibration, nfc);
+	public BlProfile(String name, int wifi, int bluetooth, int volume, int vibration) {
+		init(name, wifi, bluetooth, volume, vibration);
 	}
 
 	/*
 	 * initialization method. currently only used by constructors
 	 */
-	private void init(String name, int wifi, int bluetooth, int volume, int vibration, int nfc) {
+	private void init(String name, int wifi, int bluetooth, int volume, int vibration) {
 		this.mName = name;
 		this.mWifi = wifi;
 		this.mBluetooth = bluetooth;
@@ -55,7 +54,6 @@ public class BlProfile {
 		}
 
 		this.mVibration = vibration;
-		this.mNfc = nfc;
 	}
 
 	public String getName() {
@@ -104,12 +102,5 @@ public class BlProfile {
 		this.mVibration = vibration;
 	}
 
-	public int isNfcON() {
-		return mNfc;
-	}
-
-	public void setNfc(int nfc) {
-		this.mNfc = nfc;
-	}
 
 }

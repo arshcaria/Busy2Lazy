@@ -8,11 +8,12 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="16" />
 
-    
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:name="com.jiaqi.busy2lazy.BlApplication"
