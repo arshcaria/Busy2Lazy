@@ -2,28 +2,33 @@ package com.jiaqi.busy2lazy;
 
 import java.util.ArrayList;
 
+import com.jiaqi.busy2lazy.model.BlProfile;
 import com.jiaqi.busy2lazy.model.CellInfo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditLocationActivity extends Activity {
 
-	@SuppressWarnings("unused")
 	private static final String TAG = "EditLocationActivity_busy2lazy";
 
 	BlApplication myApp;
 	EditText locationNameEditText;
 	TextView cellsTextView;
-
+	TextView profileTextView;
+	ArrayAdapter<BlProfile> profileAdapter;
 	// current location's positionID in locationList
 	int position;
 
@@ -53,7 +58,6 @@ public class EditLocationActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				Bundle data = new Bundle();
 
 				// data.putSerializable("CELLS",
 				// myApp.locationList.get(position).cellList);
@@ -61,6 +65,24 @@ public class EditLocationActivity extends Activity {
 				intent.putExtra("CELLS", myApp.locationList.get(position).cellList);
 				intent.setComponent(new ComponentName(getApplicationContext(), EditCellActivity.class));
 				startActivityForResult(intent, 0);
+			}
+		});
+
+		profileTextView = (TextView) findViewById(R.id.profile_textview);
+		profileAdapter = new ArrayAdapter<BlProfile>(this, R.layout.profile_item_lo, myApp.profileList);
+		profileTextView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(EditLocationActivity.this).setTitle(
+						"Pick a profile").setAdapter(profileAdapter, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						myApp.locationList.get(position).setProfile(myApp.profileList.get(which));
+						Toast.makeText(EditLocationActivity.this,
+								myApp.locationList.get(position).getProfile().toString(), Toast.LENGTH_LONG).show();
+					}
+				});
+				builder.create().show();
 			}
 		});
 

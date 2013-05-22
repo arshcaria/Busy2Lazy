@@ -21,6 +21,14 @@ public class BlLocation {
 	// profile that is associated with this location
 	BlProfile mProfile;
 
+	public BlProfile getProfile() {
+		return mProfile;
+	}
+
+	public void setProfile(BlProfile profile) {
+		this.mProfile = profile;
+	}
+
 	public BlLocation(String name) {
 		mName = name;
 		cellList = new ArrayList<CellInfo>();

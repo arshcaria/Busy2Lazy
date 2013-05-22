@@ -2,9 +2,11 @@
 <resources>
 
     <string-array name="on_off_status">
-        <item>On</item>
-        <item>Off</item>
         <item>No change</item>
+        <item>Off</item>
+        <item>On</item>
+        
+        
     </string-array>
     
     <string-array name="vol_status">

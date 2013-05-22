@@ -20,7 +20,7 @@ public class BlApplication extends Application {
 
 	/**
 	 * current cell. this can be updated by
-	 * {@link UpdatCelleService.BlPhoneStateListener} when phone location
+	 * {@link UpdatCellService.BlPhoneStateListener} when phone location
 	 * changes
 	 */
 	public CellInfo currentCell;

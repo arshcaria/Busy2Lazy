@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,24 +19,61 @@
         android:id="@+id/wifi_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_name_edittext"
         android:entries="@array/on_off_status" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_name_edittext"
+        android:layout_toRightOf="@+id/wifi_status"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Wi-Fi" />
 
     <Spinner
         android:id="@+id/bluetooth_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/wifi_status"
         android:entries="@array/on_off_status" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wifi_status"
+        android:layout_toRightOf="@+id/bluetooth_status"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Bluetooth" />
 
     <Spinner
         android:id="@+id/vibration_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/bluetooth_status"
         android:entries="@array/on_off_status" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bluetooth_status"
+        android:layout_toRightOf="@+id/vibration_status"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Vibration" />
+
 
     <Spinner
         android:id="@+id/volume_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/vibration_status"
         android:entries="@array/vol_status" />
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vibration_status"
+        android:layout_toRightOf="@+id/volume_status"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Volume" />
+
+</RelativeLayout>

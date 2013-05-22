@@ -64,7 +64,7 @@ public class BlProfile {
 		this.mName = name;
 	}
 
-	public int isWifiON() {
+	public int getWifiStatus() {
 		return mWifi;
 	}
 
@@ -72,7 +72,7 @@ public class BlProfile {
 		this.mWifi = wifi;
 	}
 
-	public int isBluetoothON() {
+	public int getBluetoothStatus() {
 		return mBluetooth;
 	}
 
@@ -94,7 +94,7 @@ public class BlProfile {
 		}
 	}
 
-	public int isVibrationON() {
+	public int getVibrationStatus() {
 		return mVibration;
 	}
 

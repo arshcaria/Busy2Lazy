@@ -3,6 +3,8 @@ package com.jiaqi.busy2lazy;
 import java.util.ArrayList;
 
 import com.jiaqi.busy2lazy.model.BlLocation;
+import com.jiaqi.busy2lazy.model.BlProfile;
+import com.jiaqi.busy2lazy.model.CellInfo;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -27,19 +29,22 @@ public class LocationActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
-
+		myApp = (BlApplication) getApplication();
+		myApp.currentCell = new CellInfo();
 		Intent intent = new Intent();
-		intent.setClass(LocationActivity.this, UpdatCelleService.class);
+		intent.setComponent(new ComponentName(getApplicationContext(), UpdateCellService.class));
 		startService(intent);
 
 		/*
 		 * use Application class to store global shared data
 		 */
-		myApp = (BlApplication) getApplication();
+
 		myApp.locationList = new ArrayList<BlLocation>();
 		myApp.locationList.add(new BlLocation("Home"));
 		myApp.locationList.add(new BlLocation("Office"));
 		myApp.locationList.add(new BlLocation("Out Door"));
+
+		myApp.profileList = new ArrayList<BlProfile>();
 
 		ListView locationListView = (ListView) findViewById(R.id.location_list);
 

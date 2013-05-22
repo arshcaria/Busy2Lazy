@@ -10,7 +10,7 @@ import android.telephony.TelephonyManager;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 
-public class UpdatCelleService extends Service {
+public class UpdateCellService extends Service {
 	private static final String TAG = "CellUpdateService_busy2lazy";
 
 	BlApplication myApp;
@@ -58,16 +58,14 @@ public class UpdatCelleService extends Service {
 		@Override
 		public void onCellLocationChanged(CellLocation location) {
 			mLocation = (GsmCellLocation) location;
-			synchronized (myApp.currentCell) {
-				if (location == null) {
-					Log.w(TAG, "No location info retrieved");
-				} else {
-					myApp.currentCell.lac = mLocation.getLac();
-					myApp.currentCell.cid = mLocation.getCid();
-					myApp.currentCell.mcc = mTelephonyManager.getNetworkOperator().substring(0, 3);
-					myApp.currentCell.mnc = mTelephonyManager.getNetworkOperator().substring(3, 5);
-					Log.i(TAG, "LAC = " + myApp.currentCell.lac + " CID = " + myApp.currentCell.cid);
-				}
+			if (location == null) {
+				Log.w(TAG, "No location info retrieved");
+			} else {
+				myApp.currentCell.lac = mLocation.getLac();
+				myApp.currentCell.cid = mLocation.getCid();
+				myApp.currentCell.mcc = mTelephonyManager.getNetworkOperator().substring(0, 3);
+				myApp.currentCell.mnc = mTelephonyManager.getNetworkOperator().substring(3, 5);
+				Log.i(TAG, "LAC = " + myApp.currentCell.lac + " CID = " + myApp.currentCell.cid);
 			}
 
 		}
