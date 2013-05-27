@@ -1,5 +1,7 @@
 package com.jiaqi.busy2lazy.helper;
 
+import com.jiaqi.busy2lazy.model.BlProfile;
+
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.media.AudioManager;
@@ -52,6 +54,41 @@ public class ToggleHelper {
 
 	public void vibOff() {
 		mAudioManager.setRingerMode(AudioManager.VIBRATE_SETTING_OFF);
+	}
+	
+	public void applyProfile(BlProfile profile) {
+		switch (profile.getWifiStatus()) {
+		case 0:
+			wifiOff();
+			break;
+		case 1:
+			wifiOn();
+			break;
+		default:
+			break;
+		}
+		
+		switch (profile.getBluetoothStatus()) {
+		case 0:
+			btOff();
+			break;
+		case 1:
+			btOn();
+			break;
+		default:
+			break;
+		}
+		
+		switch (profile.getVibrationStatus()) {
+		case 0:
+			vibOff();
+			break;
+		case 1:
+			vibOn();
+			break;
+		default:
+			break;
+		}
 	}
 
 }

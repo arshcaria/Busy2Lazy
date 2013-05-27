@@ -44,14 +44,14 @@ public class EditLocationActivity extends Activity {
 		// get location name to current edit text
 		locationNameEditText.setText(myApp.locationList.get(position).toString());
 
-		for (int i = 1; i <= 5; i++) {
-			myApp.locationList.get(position).cellList.add(new CellInfo());
-		}
+//		for (int i = 1; i <= 2; i++) {
+//			myApp.locationList.get(position).cellList.add(new CellInfo());
+//		}
 
-		for (CellInfo c : myApp.locationList.get(position).cellList) {
-			c.lac = (int) (Math.random() * 100);
-			c.cid = (int) (Math.random() * 1000);
-		}
+//		for (CellInfo c : myApp.locationList.get(position).cellList) {
+//			c.lac = (int) (Math.random() * 100);
+//			c.cid = (int) (Math.random() * 1000);
+//		}
 
 		cellsTextView = (TextView) findViewById(R.id.cells_textview);
 		cellsTextView.setOnClickListener(new OnClickListener() {

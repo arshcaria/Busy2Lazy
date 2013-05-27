@@ -160,19 +160,19 @@ public class EditCellActivity extends Activity {
 
 	}
 
-	// 初始化数据
-	private void initDate() {
-
-		// list.add("data" + "   " + i);
-		for (int i = 1; i <= 5; i++) {
-			list.add(new CellInfo());
-		}
-		for (CellInfo c : list) {
-			c.lac = (int) (Math.random() * 100);
-			c.cid = (int) (Math.random() * 1000);
-		}
-
-	}
+//	// 初始化数据
+//	private void initDate() {
+//
+//		// list.add("data" + "   " + i);
+//		for (int i = 1; i <= 5; i++) {
+//			list.add(new CellInfo());
+//		}
+//		for (CellInfo c : list) {
+//			c.lac = (int) (Math.random() * 100);
+//			c.cid = (int) (Math.random() * 1000);
+//		}
+//
+//	}
 
 	// 刷新listview和TextView的显示
 	private void dataChanged() {

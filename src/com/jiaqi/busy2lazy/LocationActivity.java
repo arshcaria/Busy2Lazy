@@ -24,6 +24,12 @@ public class LocationActivity extends Activity {
 	private static final String TAG = "LocationActivity_busy2lazy";
 
 	public BlApplication myApp;
+	
+	Button startServiceButton;
+	Button stopServiceButton;
+	ListView locationListView;
+	Button toProfileActivityButton;
+	Button toToggleTestButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +37,34 @@ public class LocationActivity extends Activity {
 		setContentView(R.layout.activity_location);
 		myApp = (BlApplication) getApplication();
 		myApp.currentCell = new CellInfo();
-		Intent intent = new Intent();
-		intent.setComponent(new ComponentName(getApplicationContext(), UpdateCellService.class));
-		startService(intent);
 
 		/*
 		 * use Application class to store global shared data
 		 */
 
 		myApp.locationList = new ArrayList<BlLocation>();
+		
 		myApp.locationList.add(new BlLocation("Home"));
+		myApp.locationList.get(0).cellList.add(new CellInfo());
+		myApp.locationList.get(0).cellList.add(new CellInfo());
+		myApp.locationList.get(0).cellList.get(0).cid = 779;
+		myApp.locationList.get(0).cellList.get(1).cid = 772;
+		
 		myApp.locationList.add(new BlLocation("Office"));
+		myApp.locationList.get(1).cellList.add(new CellInfo());
+		myApp.locationList.get(1).cellList.add(new CellInfo());
+		myApp.locationList.get(1).cellList.get(0).cid = 23177;
+		myApp.locationList.get(1).cellList.get(1).cid = 23179;
+		
 		myApp.locationList.add(new BlLocation("Out Door"));
+		myApp.locationList.get(2).cellList.add(new CellInfo());
+		myApp.locationList.get(2).cellList.add(new CellInfo());
+		myApp.locationList.get(2).cellList.get(0).cid = 23751;
+		
 
 		myApp.profileList = new ArrayList<BlProfile>();
 
-		ListView locationListView = (ListView) findViewById(R.id.location_list);
+		locationListView = (ListView) findViewById(R.id.location_list);
 
 		ArrayAdapter<BlLocation> locationAdapter = new ArrayAdapter<BlLocation>(this, R.layout.location_item_lo,
 				myApp.locationList);
@@ -63,7 +81,7 @@ public class LocationActivity extends Activity {
 			}
 		});
 
-		Button toProfileActivityButton = (Button) findViewById(R.id.to_profile_activity_button);
+		toProfileActivityButton = (Button) findViewById(R.id.to_profile_activity_button);
 		toProfileActivityButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -74,7 +92,7 @@ public class LocationActivity extends Activity {
 			}
 		});
 
-		Button toToggleTestButton = (Button) findViewById(R.id.to_toggle_test_button);
+		toToggleTestButton = (Button) findViewById(R.id.to_toggle_test_button);
 		toToggleTestButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -82,6 +100,25 @@ public class LocationActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setComponent(new ComponentName(getApplicationContext(), ToggleTestActivity.class));
 				startActivity(intent);
+			}
+		});
+		
+		startServiceButton = (Button) findViewById(R.id.start_service_button); 
+		startServiceButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setComponent(new ComponentName(getApplicationContext(), UpdateCellService.class));
+				startService(intent);
+			}
+		});
+		stopServiceButton = (Button) findViewById(R.id.stop_service_button); 
+		stopServiceButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setComponent(new ComponentName(getApplicationContext(), UpdateCellService.class));
+				stopService(intent);
 			}
 		});
 	}

@@ -1,5 +1,9 @@
 package com.jiaqi.busy2lazy;
 
+import com.jiaqi.busy2lazy.helper.ToggleHelper;
+import com.jiaqi.busy2lazy.model.BlLocation;
+import com.jiaqi.busy2lazy.model.CellInfo;
+
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +24,7 @@ public class UpdateCellService extends Service {
 
 	@Override
 	public void onCreate() {
+		Log.i(TAG, "UpdateCellService started.");
 		myApp = (BlApplication) getApplication();
 
 		mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
@@ -39,6 +44,7 @@ public class UpdateCellService extends Service {
 			Integer cellId = mLocation.getCid();
 			Log.i(TAG, " MCC = " + mcc + "\t MNC = " + mnc + "\t LAC = " + lac + "\t CID = " + cellId);
 		}
+		udpate();
 	}
 
 	@Override
@@ -50,7 +56,19 @@ public class UpdateCellService extends Service {
 	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
+		Log.i(TAG, "UpdateCellService stopped.");
 		super.onDestroy();
+	}
+
+	private void udpate() {
+		for (BlLocation location : myApp.locationList) {
+			for (CellInfo cell : location.cellList) {
+				if (cell.cid == myApp.currentCell.cid) {
+					ToggleHelper th = new ToggleHelper(UpdateCellService.this);
+					th.applyProfile(location.getProfile());
+				}
+			}
+		}
 	}
 
 	class BlPhoneStateListener extends PhoneStateListener {
@@ -66,8 +84,10 @@ public class UpdateCellService extends Service {
 				myApp.currentCell.mcc = mTelephonyManager.getNetworkOperator().substring(0, 3);
 				myApp.currentCell.mnc = mTelephonyManager.getNetworkOperator().substring(3, 5);
 				Log.i(TAG, "LAC = " + myApp.currentCell.lac + " CID = " + myApp.currentCell.cid);
+				udpate();
 			}
-
 		}
+
 	}
+
 }
